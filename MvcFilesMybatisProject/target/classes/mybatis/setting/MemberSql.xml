@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="idCheckOfMember" parameterType="String" resultType="int">
+		select count(*) from member where myid=#{myid}
+	</select>
+	
+	<insert id="insertOfMeber" parameterType="mdto">
+		insert into member (name, myid, pass, hp, photos, gaipday) values (#{name}, #{myid}, #{pass}, #{hp}, #{photos}, now())
+	</insert>
+	
+	<select id="selectAllOfMember" resultType="mdto">
+		select * from member order by myid asc
+	</select>
+	
+	<select id="detailOfMember" parameterType="String" resultType="mdto">
+		select * from member where num = #{num}
+	</select>
+	
+	<select id="passCheckOfMember" parameterType="HashMap" resultType="int">
+		select count(*) from member where num=#{num} and pass=#{pass}
+	</select>
+	
+	<update id="updateOfMember" parameterType="mdto">
+		update member set myid=#{myid}, name=#{name}, hp=#{hp}
+		<if test="photos!=null">,photos=#{photos}</if>
+		 where num=#{num}
+	</update>
+	
+	<delete id="deleteOfMember" parameterType="String">
+		delete from member where num=#{num}
+	</delete>
+</mapper>
