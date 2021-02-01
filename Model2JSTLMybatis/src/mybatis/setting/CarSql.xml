@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="car">
+	<!-- 전체 갯수 얻기 -->
+	<select id="totalCountOfCar" resultType="int">
+		select count(*) from mycar
+	</select>
+	
+	<!-- insert -->
+	<insert id="insertOfCar" parameterType="cdto">
+		insert into mycar (carname, carprice, carcolor, carguip) values (#{carname}, #{carprice}, #{carcolor}, #{carguip})
+	</insert>
+	
+	<select id="selectAllOfCar" resultType="cdto"> <!-- List로 얻거나 하나의 dto만 얻어도 들어가는 dto로 주면됌 -->
+		select * from mycar order by num asc
+	</select>
+	
+	<select id="selectOneOfCar" parameterType="String" resultType="cdto">
+		select * from mycar where num = #{num}
+	</select>
+	
+	<update id="updateOfCar" parameterType="cdto">
+		update mycar set carname=#{carname}, carprice=#{carprice}, carcolor=#{carcolor}, carguip=#{carguip} where num=#{num}
+	</update>
+	
+	<delete id="deleteOfCar" parameterType="String">
+		delete from mycar where num=#{num}
+	</delete>
+</mapper>
