@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.shop.data.MysqlShopMapper">
+	<select id="getTotalCount" resultType="int">
+		select count(*) from shop
+	</select> <!-- MysqlShopMapper interface를 상속받아서 구현하는 곳, id가 함수 이름과 반드시 같아야 함 -->
+	
+	<select id="getAllDatas" resultType="shop"> <!-- alias안할때는 boot.shop.data.ShopDto로 -->
+		select * from shop order by sangpum asc
+	</select>
+	
+	<insert id="insertShop" parameterType="shop">
+		insert into shop (sangpum, price, photoname, ipgoday) values (#{sangpum}, #{price}, #{photoname}, now())
+	</insert>
+	
+	<select id="getData" parameterType="String" resultType="shop">
+		select * from shop where num=#{num}
+	</select>
+	
+	<update id="updateShop" parameterType="shop">
+		update shop set sangpum=#{sangpum}, price=#{price}
+		<if test="photoname!='no'">
+			, photoname=#{photoname}
+		</if>
+		 where num=#{num}
+	</update>
+	
+	<delete id="deleteShop" parameterType="String">
+		delete from shop where num=#{num}
+	</delete>
+</mapper>
