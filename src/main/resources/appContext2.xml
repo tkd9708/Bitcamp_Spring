@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- xml 방식 -->
+<!-- 	<bean id="mydao" class="test3.MyDao"/> 주입할게 없음
+	
+	<bean id="list" class="test3.ListController">
+		<constructor-arg ref="mydao"/>
+	</bean> -->
+
+	<!-- annotation 방식 -->
+	<context:annotation-config/>
+	<!-- annotation을 적용할 패키지 등록 -->
+	<context:component-scan base-package="test3"></context:component-scan>
+</beans>
