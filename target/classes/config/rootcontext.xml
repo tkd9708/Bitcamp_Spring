@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="oracle" class="ex4.test.ServerSetting">
+		<constructor-arg>
+			<value>oracle.jdbc.OracleDriver</value>
+		</constructor-arg>
+		<property name="url">
+			<value>jdbc:oracle:thin:@localhost:1521:orcl</value>
+		</property>
+		<property name="userName" value="angel"/>
+		<property name="passWord" value="a1234"></property>
+	</bean>
+	
+	<bean id="oraclesource" class="ex4.test.DataSource">
+		<property name="server" ref="oracle"/>
+	</bean>
+
+</beans>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="stu" class="ex3.test.Student">
+		<constructor-arg value="95"></constructor-arg>
+		<constructor-arg value="85"></constructor-arg>
+		<constructor-arg value="94"></constructor-arg>
+		<property name="name" value="유재석"></property>
+	</bean>
+	
+	<bean id="sungjuk" class="ex3.test.Sungjuk">
+		<constructor-arg ref="stu"></constructor-arg>
+		<property name="schoolName" value="강남대"></property>
+	</bean>
+
+</beans>

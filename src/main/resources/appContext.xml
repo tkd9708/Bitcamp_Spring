@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+	<!-- hello 등록 -->
+	<bean id="hello" class="ex1.test.Hello" scope="prototype"/>
+
+	<!-- sawon 등록 -->
+	<bean id="sawon" class="ex2.test.Sawon">
+		<constructor-arg value="강호동"></constructor-arg>
+		<property name="hp">
+			<value>010-1234-5678</value> <!-- 길면 요렇게 따로 빼서 줘도됌 -->
+		</property>
+		<property name="addr" value="서울시 강남구 역삼동"></property> <!-- 요렇게 줘도되고 -->
+	</bean>
+	
+	<bean id="sawon2" class="ex2.test.Sawon">
+		<constructor-arg value="강민수"></constructor-arg>
+		<property name="hp">
+			<value>010-7777-9999</value> <!-- 길면 요렇게 따로 빼서 줘도됌 -->
+		</property>
+		<property name="addr" value="제주도 애월읍"></property> <!-- 요렇게 줘도되고 -->
+	</bean>
+	
+	<!-- EmpPay 등록 -->
+	<bean id="emp" class="ex2.test.EmpPay">
+		<constructor-arg ref="sawon2"></constructor-arg> <!-- ref : 생성된 객체 넣을때 -->
+		<property name="pay" value="3456780"/>
+	</bean>
+</beans>
