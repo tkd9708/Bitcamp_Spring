@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="answer">
+	<insert id="insertOfAnswer" parameterType="adto">
+		insert into reanswer (num,msg,photoname,writeday) values (#{num}, #{msg}, #{photoname}, now())
+	</insert>
+	
+	<select id="selectAllOfAnswer" parameterType="String" resultType="adto">
+		select * from reanswer where num=#{num} order by idx desc
+	</select>
+	
+	<delete id="deleteOfAnswer" parameterType="String">
+		delete from reanswer where idx=#{idx}
+	</delete>
+	
+	<select id="selectOfAnswer" parameterType="String" resultType="adto">
+		select * from reanswer where idx=#{idx}
+	</select>
+	
+	<update id="updateOfAnswer" parameterType="adto">
+		update reanswer set msg=#{msg} 
+		<if test="photoname!=null">
+			,photoname=#{photoname}
+		</if>
+		where idx=#{idx}
+	</update>
+</mapper>
